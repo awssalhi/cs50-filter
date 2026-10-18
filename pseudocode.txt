@@ -1,0 +1,12 @@
+Blur pseudocode
+
+1. Make a copy of the whole image before changing anything.
+2. Go through every pixel in the image (row i, column j).
+3.   Start the red sum, green sum, blue sum and the count at 0.
+4.   Look at the 3x3 box around the pixel: rows i-1 to i+1, columns j-1 to j+1.
+5.   For each spot in the box, check whether it exists on the image:
+     its row must be between 0 and height-1, and its column between 0 and width-1.
+6.   If the spot exists, add its red, green and blue FROM THE COPY to the sums, and add 1 to the count.
+7.   At a corner, 5 of the 9 spots fall off the image, so only 4 are counted.
+     (Top-left corner: row -1 and column -1 do not exist.) On an edge 6 are counted, in the middle 9.
+8.   Set the real pixel to each sum divided by the count, as a decimal, rounded.
